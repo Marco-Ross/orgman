@@ -1,23 +1,28 @@
 package ac.za.cput.adp3.xyzcongolmerate.factory.org;
 
+import ac.za.cput.adp3.xyzcongolmerate.domain.org.Organisation;
+import ac.za.cput.adp3.xyzcongolmerate.util.Helper;
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class OrganisationFactoryTest {
 
-    //TODO: implement method body ONLY!
     @Test
     public void buildOrganisation() {
-        throw new UnsupportedOperationException("Not supported yet.");
-        /**
-         * Your implementation goes here
-         *
-         * INSTRUCTION
-         * 1. Remove line [//TODO: implement method body ONLY!]
-         * 2. Remove line [throw new UnsupportedOperationException("Not yet supported.");]
-         * 3. Test the OrganisationFactory class
-         * 4. Assert that the id is generated.
-         */
+        //Generate mock object & suffix.
+        String suffix = Helper.getSuffixFromClassName(OrganisationFactory.class);
+        Organisation organisation = OrganisationFactory.buildOrganisation("Foodies");
+
+        Assert.assertNotNull(organisation.getOrgCode()); //Check if notNull.
+        Assert.assertNotNull(organisation); //Check if notNull.
+
+        //Check that the "suffix" of Code is correct by comparing it to mock one generated
+        for(int i = 0; i<suffix.length(); i++){
+            Assert.assertEquals(suffix.charAt(i), organisation.getOrgCode().charAt(i));
+        }
+
+        Assert.assertNotNull(organisation.getOrgName()); //Check if Description is notNull
     }
 }

@@ -1,21 +1,26 @@
 package ac.za.cput.adp3.xyzcongolmerate.factory.demography;
 
+import ac.za.cput.adp3.xyzcongolmerate.domain.demography.Gender;
+import ac.za.cput.adp3.xyzcongolmerate.util.Helper;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class GenderFactoryTest {
 
-    //TODO: implement method body ONLY!
     @Test
     public void buildGender() {
-        throw new UnsupportedOperationException("Not supported yet!");
-        /**
-         * Your implementation goes here
-         *
-         * INSTRUCTION
-         * 1. Remove line [//TODO: implement method body ONLY!]
-         * 2. Remove line [throw new UnsupportedOperationException("Not yet supported!");]
-         * 3. Test the GenderFactory class
-         * 4. Assert that the id is generated.
-         */
+        //Generate mock object & suffix.
+        String suffix = Helper.getSuffixFromClassName(GenderFactory.class);
+        Gender gender = GenderFactory.buildGender("Male");
+
+        Assert.assertNotNull(gender.getGenderId()); //Check if notNull.
+        Assert.assertNotNull(gender); //Check if notNull.
+
+        //Check that the "suffix" of ID is correct by comparing it to mock one generated
+        for(int i = 0; i<suffix.length(); i++){
+            Assert.assertEquals(suffix.charAt(i), gender.getGenderId().charAt(i));
+        }
+
+        Assert.assertNotNull(gender.getGenderDescription()); //Check if Description is notNull
     }
 }
